@@ -2,6 +2,7 @@
     <head>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
         <link rel="stylesheet" href="styles.css" />
+	<title>Pirelli Search Bot</title>
     </head>
     <body>
         <div id="message_window">
@@ -17,7 +18,7 @@
                                     ...
                                 </div>
                             {{/if}}
-                            {{message.text}}
+			    {{{message.text}}}
                         </div>
                     </div>
                 </div>
@@ -25,7 +26,7 @@
             <div id="message_replies">
             </div>
             <footer>
-                <form onsubmit="messenger.send(messenger.input.value, event)">
+                <form onsubmit="messenger.send(messenger.input.value.replace('\'', ' '), event)">
                     <input type="text" autocomplete="off" id="messenger_input" placeholder="Type here..." />
                     <button type="submit">Send</button>
                 </form>

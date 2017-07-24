@@ -15,6 +15,7 @@
     -> http://howdy.ai/botkit
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
 var env = require('node-env-file');
 env(__dirname + '/.env');
 
@@ -52,7 +53,7 @@ var webserver = require(__dirname + '/components/express_webserver.js')(controll
 // Open the web socket server
 controller.openSocketServer(controller.httpserver);
 
-var rasa = require('botkit-rasa')({rasa_uri: 'http://localhost:5000'});
+var rasa = require('./rasa');
 controller.middleware.receive.use(rasa.receive);
 
 // Start the bot brain in motion!!
@@ -65,12 +66,15 @@ require("fs").readdirSync(normalizedPath).forEach(function(file) {
 
 console.log('I AM ONLINE! COME TALK TO ME: http://localhost:' + process.env.PORT)
 
-controller.hears(['greet', 'restaurant_search', 'affirm', 'mailman_info', 'bi_landscape', 'goodbye'], 'message_received', rasa.hears, function(bot, message) {
-
+controller.hears(['greet', 'restaurant_search', 'affirm', 'mailman_info', 'bi_landscape', 'goodbye', 'hr_permessi'], 'message_received', rasa.hears, function(bot, message) {
     console.log('Intent:', message.intent);
-    console.log('Entities:', message.entities);    
-    bot.reply(message, message.intent.name)
+    console.log('Entities:', message.entities);
+
+    bot.reply(message, "to be implemented");
+    
 });
+
+
 
 function usage_tip() {
     console.log('~~~~~~~~~~');

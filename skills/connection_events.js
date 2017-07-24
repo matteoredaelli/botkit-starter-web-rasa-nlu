@@ -3,14 +3,14 @@ module.exports = function(controller) {
   controller.on('hello', function(bot, message) {
 
     // a new session with an unknown user has begun
-    bot.reply(message, 'Hello! I am a Botkit bot! Please configure me to do something useful.');
+    bot.reply(message, 'Ciao! Io sono un Search bot! Scrivi "help" per avere un\' idea su come posso aiutarti');
 
   });
 
   controller.on('welcome_back', function(bot, message) {
 
     // a known user has started a new, fresh session
-    bot.reply(message, 'Hello again. I still need to be configured.');
+    bot.reply(message, 'Ciao! In cosa posso aiutarti? Scrivi "help" per avere dei suggerimenti...');
 
   });
 
